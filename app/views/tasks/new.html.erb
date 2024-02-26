@@ -1,2 +1,8 @@
-<h1>Tasks#new</h1>
-<p>Find me in app/views/tasks/new.html.erb</p>
+<!-- app/views/tasks/new.html.erb -->
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-body">
+      <%= render 'form', task: Task.new %>
+    </div>
+  </div>
+</div>

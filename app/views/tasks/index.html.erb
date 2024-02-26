@@ -5,8 +5,8 @@
     <% @tasks.each do |task| %>
       <div class="col-md-4 mb-4">
         <div class="card">
-          <div class="card-body">
-            <%= link_to task.title, task, style: "text-decoration: none;" %>
+          <div class="card-body mx-auto">
+            <%= link_to task.title, task, style: "text-decoration: none;" %><br>
             <% if task.due_date.present? %>
               <span class="badge bg-primary rounded-pill"><%= task.due_date.strftime('%b %d, %Y') %></span>
             <% else %>
@@ -35,7 +35,9 @@
   $(document).ready(function() {
     $("#add-task-button").on("click", function() {
       console.log("Button clicked!");
-      $("#new-task-form").toggle();
+      $("#new-task-form").animate({
+      height: 'toggle'
+    });
     });
   });
 </script>

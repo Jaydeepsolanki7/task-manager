@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :edit]
+  before_action :authenticate_user!, only: [:new, :edit, :destroy]
 
   def index
     @tasks = Task.all
@@ -34,7 +34,8 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    
+    @task.destroy
+    redirect_to root_path, status: :see_other
   end
 
   private

@@ -1,12 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand ms-3" href="<%= root_path%>">
-      <img alt=" logo" width="7%" src="/assets/book2.png"> Task Manager  </a>
+      <img alt=" " width="7%" src="/assets/book2.png"> Task Manager  </a>
     <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <!--<% if user_signed_in? %>
-      <a class="nav-link active" aria-current="page" href="#"><%=current_user.stripe_customer_id%></a>
     <% end %> -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -15,7 +14,7 @@
         <% if user_signed_in? %> 
           <div class="nav-item dropdown ">
             <a class="nav-link dropdown-toggle me-3" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <%= current_user.name%>
+              <%= current_user.email%>
               <%# <%= link_to "Create New Order", new_order_path, class: "btn btn-primary" %> 
 
             </a>

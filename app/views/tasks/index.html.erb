@@ -1,10 +1,10 @@
-  <div class="container mt-5">
+<div class="container mt-5">
   <h1 class="display-4 mb-4">Tasks</h1>
 
   <div class="row">
     <% @tasks.each do |task| %>
       <div class="col-md-4 mb-4">
-        <div class="card">
+        <div class="card" <% if task.due_date.present? && task.due_date < Time.now %> style="opacity: 0.15;" <% end %>>
           <div class="card-body mx-auto">
             <%= link_to task.title, task, style: "text-decoration: none;" %><br>
             <% if task.due_date.present? %>
@@ -18,7 +18,6 @@
     <% end %>
   </div>
 </div>
-
 
 <div class="container mt-5">
   <div class="card">
@@ -36,8 +35,17 @@
     $("#add-task-button").on("click", function() {
       console.log("Button clicked!");
       $("#new-task-form").animate({
-      height: 'toggle'
+        height: 'toggle'
+      });
     });
+
+    $(".card").each(function() {
+      var dueDate = new Date($(this).find(".badge").text());
+      if (dueDate < new Date()) {
+        $(this).animate({
+          opacity: 0.15
+        });
+      }
     });
   });
 </script>

@@ -4,16 +4,18 @@
   <div class="row">
     <% @tasks.each do |task| %>
       <div class="col-md-4 mb-4">
-        <div class="card" <% if task.due_date.present? && task.due_date < Time.now %> style="opacity: 0.15;" <% end %>>
-          <div class="card-body mx-auto">
-            <%= link_to task.title, task, style: "text-decoration: none;" %><br>
-            <% if task.due_date.present? %>
-              <span class="badge bg-primary rounded-pill"><%= task.due_date.strftime('%b %d, %Y') %></span>
-            <% else %>
-              <span class="badge bg-secondary rounded-pill">No due date</span>
-            <% end %>
+        <a href="<%= task_path(task) %>" style="text-decoration: none; color: inherit;">
+          <div class="card zoom" <% if task.due_date.present? && task.due_date < Time.now %><% end %>>
+            <div class="card-body mx-auto">
+              <h5 class="card-title"><%= task.title %></h5>
+              <% if task.due_date.present? %>
+                <span class="badge bg-dark rounded-pill"><%= task.due_date.strftime('%b %d, %Y, %H:%M:%S') %></span>
+              <% else %>
+                <span class="badge bg-secondary rounded-pill">No due date</span>
+              <% end %>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
     <% end %>
   </div>
@@ -22,30 +24,10 @@
 <div class="container mt-5">
   <div class="card">
     <div class="card-body">
-      <button id="add-task-button" class="btn btn-primary">Add New Task</button>
+      <button id="add-task-button" class="btn btn-dark">Add New Task</button>
       <div id="new-task-form" style="display: none;">
         <%= render 'form', task: Task.new %>
       </div>
     </div>
   </div>
 </div>
-
-<script>
-  $(document).ready(function() {
-    $("#add-task-button").on("click", function() {
-      console.log("Button clicked!");
-      $("#new-task-form").animate({
-        height: 'toggle'
-      });
-    });
-
-    $(".card").each(function() {
-      var dueDate = new Date($(this).find(".badge").text());
-      if (dueDate < new Date()) {
-        $(this).animate({
-          opacity: 0.15
-        });
-      }
-    });
-  });
-</script>

@@ -1,10 +1,10 @@
 <div class="container mt-5">
   <div class="card">
-    <div class="card-body">
+    <div class="card-body text-center">
       <h2 class="card-title"><%= @task.title %></h2>
       <p class="card-text"><%= @task.description %></p>
       <% if @task.due_date.present? %>
-      <span class="badge bg-primary rounded-pill"><%= @task.due_date.strftime('%b %d, %Y') %></span>
+      <span class="badge bg-dark rounded-pill"><%= @task.due_date.strftime('%b %d, %Y, %H:%M:%S') %></span>
       <% else %>
         <span class="badge bg-secondary rounded-pill">No due date</span>
       <% end %>
@@ -17,3 +17,16 @@
     </div>
   </div>
 </div>
+
+<script>
+  $(document).ready(function() {
+    $(".card").each(function() {
+      var dueDate = new Date($(this).find(".badge").text());
+      if (dueDate < new Date()) {
+        $(this).animate({
+          opacity: 0.15
+        });
+      }
+    });
+  });
+</script>

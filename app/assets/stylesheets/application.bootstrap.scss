@@ -4,3 +4,34 @@
 .btn{
   margin-top: auto;
 }
+
+body {
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+
+.container {
+  background-color: rgba(14, 6, 6, 0.9); 
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.badge {
+  color: #fff; 
+}
+.zoom {
+  transition: transform 0.7s;
+
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  -ms-transform: scale(1.3); 
+  -webkit-transform: scale(1.3); 
+  transform: scale(1.3); 
+}
